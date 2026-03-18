@@ -2,6 +2,8 @@ bin/
 obj/
 **/bin/
 **/obj/
+.data/
+**/.data
 /packages/
 riderModule.iml
 /_ReSharper.Caches/

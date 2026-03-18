@@ -3,10 +3,11 @@ using WebApp.Domain.Entities;
 
 namespace WebApp.Infrastructure.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : DbContext(options)
 {
     public DbSet<User> Users => Set<User>();
+    public DbSet<SafeKey> SafeKeys => Set<SafeKey>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

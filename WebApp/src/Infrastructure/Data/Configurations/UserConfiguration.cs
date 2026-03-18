@@ -4,7 +4,7 @@ using WebApp.Domain.Entities;
 
 namespace WebApp.Infrastructure.Data.Configurations;
 
-public class UserConfiguration: IEntityTypeConfiguration<User>
+public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
@@ -26,5 +26,10 @@ public class UserConfiguration: IEntityTypeConfiguration<User>
         // Indexes
         builder.HasIndex(u => u.Email)
             .IsUnique(); // Ensure no duplicate emails at the DB level
+
+        builder.HasMany(u => u.SafeKeys)
+            .WithOne(k => k.User)
+            .HasForeignKey(k => k.UserId)
+            .IsRequired();
     }
 }
