@@ -8,5 +8,5 @@ public class Course
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public ICollection<CourseUser> CourseUsers { get; } = [];
-    public ICollection<Course> Users { get; set; } = [];
+    public ICollection<User> Users { get; set; } = [];
 }

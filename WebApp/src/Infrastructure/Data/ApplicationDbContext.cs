@@ -8,6 +8,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<SafeKey> SafeKeys => Set<SafeKey>();
+    public DbSet<Course> Courses => Set<Course>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

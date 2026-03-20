@@ -31,5 +31,18 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithOne(k => k.User)
             .HasForeignKey(k => k.UserId)
             .IsRequired();
+
+        builder.HasMany(u => u.Courses)
+            .WithMany(c => c.Users)
+            .UsingEntity<CourseUser>(
+                l => l.HasOne(cu => cu.Course)
+                    .WithMany(c => c.CourseUsers)
+                    .HasForeignKey(cu => cu.CourseId),
+                r => r.HasOne(cu => cu.User)
+                    .WithMany(u => u.CourseUsers)
+                    .HasForeignKey(cu => cu.UserId),
+
+                j => j.HasKey(cu => new { cu.UserId, cu.CourseId })
+            );
     }
 }
