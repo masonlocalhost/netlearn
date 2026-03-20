@@ -3,6 +3,7 @@ using WebApp.Application.Interfaces;
 using WebApp.Application.Services;
 using WebApp.Infrastructure.Data;
 using WebApp.Infrastructure.Repositories;
+using WebApp.Presentation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseMyCustomMiddleware();
 
 app.UseHttpsRedirection();
 
