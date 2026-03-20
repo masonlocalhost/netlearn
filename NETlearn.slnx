@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="Dev/Dev.csproj" />
+  <Project Path="Dev\Dev.csproj" />
   <Project Path="WebApp\WebApp.csproj" />
 </Solution>
