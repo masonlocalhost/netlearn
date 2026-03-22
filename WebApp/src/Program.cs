@@ -30,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseMyCustomMiddleware();
+app.UseRequestCulture();
 
 app.UseHttpsRedirection();
 
