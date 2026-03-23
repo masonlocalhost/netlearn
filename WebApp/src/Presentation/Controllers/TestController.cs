@@ -6,32 +6,41 @@ namespace WebApp.Presentation.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class TestController: ControllerBase
+public class TestController : ControllerBase
 {
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<GetCourseResponse>> GetCourse(Guid id, CancellationToken cancellationToken)
+    public async Task<ActionResult<GetCourseResponse>> GetCourse(GetCourseRequest req, CancellationToken cancellationToken)
     {
         return Ok(new GetCourseResponse(
-            new CourseDTO(
-                Guid.NewGuid(),
-                "etest",
-                "pubhorn",
-                DateTime.UtcNow,
-                DateTime.UtcNow
-            )
+            new CourseDTO
+            {
+                Id = req.Id,
+                Name = "etest",
+                Topic = "pubhorn",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            }
+
         ));
     }
-    
-    public async Task<ActionResult<GetCourseResponse>> ListCourses([FromRoute]Guid id, CancellationToken cancellationToken)
+
+    [HttpGet]
+    public async Task<ActionResult<ListCoursesResponse>> ListCourses(ListCoursesRequest req, CancellationToken cancellationToken)
     {
-        return Ok(new GetCourseResponse(
-            new CourseDTO(
-                Guid.NewGuid(),
-                "etest",
-                "pubhorn",
-                DateTime.UtcNow,
-                DateTime.UtcNow
-            )
-        ));
+        return Ok(new ListCoursesResponse());
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<CreateCourseResponse>> CreateCourse([FromBody] CreateCourseRequest req, CancellationToken cancellationToken)
+    {
+        return Ok(new CreateCourseResponse
+        {
+            Course = new CourseDTO
+            {
+                Id = Guid.NewGuid(),
+                Name = req.Name,
+                Topic = req.Topic,
+            }
+        });
     }
 }
