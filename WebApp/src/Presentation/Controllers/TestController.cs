@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Application.DTOs;
 using WebApp.Domain.Entities;
@@ -6,7 +7,7 @@ namespace WebApp.Presentation.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class TestController : ControllerBase
+public class TestController(ILogger<TestController> logger) : ControllerBase
 {
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<GetCourseResponse>> GetCourse(GetCourseRequest req, CancellationToken cancellationToken)
@@ -27,6 +28,9 @@ public class TestController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<ListCoursesResponse>> ListCourses(ListCoursesRequest req, CancellationToken cancellationToken)
     {
+        var userId = this.HttpContext.Items["UserId"]?.ToString();
+        logger.LogInformation(userId);
+
         return Ok(new ListCoursesResponse());
     }
 

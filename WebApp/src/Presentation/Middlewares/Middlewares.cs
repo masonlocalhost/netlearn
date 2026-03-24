@@ -6,4 +6,9 @@ public static class CustomMiddlewareExtensions
     {
         return app.UseMiddleware<RequestCultureMiddleware>();
     }
+
+    public static IApplicationBuilder UseUserInjection(this IApplicationBuilder app)
+    {
+        return app.UseMiddleware<UserInjectionMiddleware>();
+    }
 }
