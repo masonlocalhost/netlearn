@@ -1,4 +1,6 @@
 <Solution>
-  <Project Path="Dev\Dev.csproj" />
-  <Project Path="WebApp\WebApp.csproj" />
+  <Project Path="src\NETlearn.Domain\NETlearn.Domain.csproj" />
+  <Project Path="src\NETlearn.Application\NETlearn.Application.csproj" />
+  <Project Path="src\NETlearn.Infrastructure\NETlearn.Infrastructure.csproj" />
+  <Project Path="src\NETlearn.WebAPI\NETlearn.WebAPI.csproj" />
 </Solution>
