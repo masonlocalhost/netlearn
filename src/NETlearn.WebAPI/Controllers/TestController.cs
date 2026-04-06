@@ -10,7 +10,7 @@ namespace NETlearn.WebAPI.Controllers;
 public class TestController(ILogger<TestController> logger) : ControllerBase
 {
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<GetCourseResponse>> GetCourse(GetCourseRequest req, CancellationToken cancellationToken)
+    public async Task<ActionResult<GetCourseResponse>> GetCourse([FromRoute]GetCourseRequest req, CancellationToken cancellationToken)
     {
         return Ok(new GetCourseResponse(
             new CourseDTO
